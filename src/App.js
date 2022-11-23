@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { StockDetails } from "./Pages/StockDetails";
+import { StockOverview } from "./Pages/StockOverview";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+      <BrowserRouter>
+        <Routes>
+          {/* overview page component */}
+          <Route
+            path="/"
+            element={ <StockOverview /> }
+          />
+          {/* details page component */}
+          <Route
+            path="/details/:stockName"
+            element={ <StockDetails /> }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
